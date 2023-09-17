@@ -42,12 +42,6 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
-# Cors
-
-CORS_ALLOWED_ORIGIN = [
-    os.environ.get('CLIENT_ORIGIN')
-]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,11 +54,13 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'rest_framework',
+    'corsheaders',
 
     'profiles',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -74,6 +70,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CORS_ALLOWED_ORIGIN = [
+    os.environ.get('CLIENT_ORIGIN')
+]
+
 
 ROOT_URLCONF = 'bookverse_api.urls'
 
