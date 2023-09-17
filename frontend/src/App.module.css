@@ -2,3 +2,41 @@
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
 }
+
+.Main {
+    padding-top: 80px;
+}
+
+a {
+    color: #6D9DC5;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: 500;
+    transition: color ease-in-out 0.3s;
+  }
+  
+a:hover {
+    color: #121420;
+}
+
+a:hover i {
+    color: #121420;
+    transition: color ease-in-out 0.3s;
+  }
+  
+i {
+    color: #6D9DC5;
+    font-size: 1.6rem;
+    padding: 6px;
+    vertical-align: middle;
+  }
+  
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #6D9DC5;
+  }
+
+.Search {
+    border-radius: 20px;
+}
