@@ -4,13 +4,42 @@ import logo from '../assets/logo.png'
 import styles from "../styles/NavBar.module.css"
 import buttonstyles from "../styles/Button.module.css"
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from '../context/currentUserContext';
+import { useCurrentUser, useSetCurrentUser } from '../context/currentUserContext';
+import axios from 'axios';
+import Avatar from './Avatar';
 
 
 const NavBar = () => {
   const currentUser = useCurrentUser;
+  const setCurrentUser = useSetCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>
+  const handleSignOut = async () => {
+    try {
+      await axios.post("/api/dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addBooks = (
+    <NavLink 
+      activeClassName={styles.Active} 
+      to="/books/create">
+      <i className="far fa-plus-square"></i>Add Book
+    </NavLink>
+  )
+
+  const loggedInIcons = 
+    <>
+      <NavLink 
+        activeClassName={styles.Active} 
+        to={`/profiles/${currentUser?.profile_id}`}><Avatar src={currentUser?.profile_image} 
+        text={currentUser?.username}
+        height={40} />
+      </NavLink>
+      <NavLink to="/signin" onClick={handleSignOut}><i className="fa-solid fa-right-from-bracket"></i>Sign out</NavLink>
+    </>
 
   const loggedOutIcons = (
     <> 
@@ -28,11 +57,16 @@ const NavBar = () => {
               <img src={logo} alt='logo' height='60' />
             </Navbar.Brand>
           </NavLink>
+          {currentUser && addBooks}
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto">
-                <NavLink exact activeClassName={styles.Active} to="/"><i className="fa-solid fa-house"></i>Home</NavLink>
-                <NavLink activeClassName={styles.Active} to="/mybooks"><i className="fa-solid fa-book"></i>My Books</NavLink>
+                {currentUser ? (
+                  <>
+                    <NavLink exact activeClassName={styles.Active} to="/"><i className="fa-solid fa-house"></i>Home</NavLink>
+                    <NavLink activeClassName={styles.Active} to="/mybooks"><i className="fa-solid fa-book"></i>My Books</NavLink>
+                  </>
+                ) : null}
                 <Form className="d-flex">
                 <Form.Control
                     type="search"
