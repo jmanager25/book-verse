@@ -10,7 +10,7 @@ import Avatar from './Avatar';
 
 
 const NavBar = () => {
-  const currentUser = useCurrentUser;
+  const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
   const handleSignOut = async () => {

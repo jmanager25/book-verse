@@ -5,11 +5,11 @@ import buttonstyles from "../../styles/Button.module.css";
 import appstyles from "../../App.module.css"
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import axios from "axios";
-import { useCurrentUser } from '../../context/currentUserContext';
+import { useSetCurrentUser } from '../../context/currentUserContext';
 
 
 const SignInForm = () => {
-   const setCurrentUser = useCurrentUser
+   const setCurrentUser = useSetCurrentUser();
     
    const [signInData, setSignInData] = useState({
     username: "",
