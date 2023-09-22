@@ -7,7 +7,7 @@
 
 import axios from 'axios';
 
-// axios.default.baseURL = '/api';
+axios.default.baseURL = '/api';
 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
 axios.defaults.withCredentials = true;
 

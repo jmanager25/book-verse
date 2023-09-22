@@ -61,9 +61,9 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto">
+                <NavLink exact activeClassName={styles.Active} to="/"><i className="fa-solid fa-house"></i>Home</NavLink>
                 {currentUser ? (
                   <>
-                    <NavLink exact activeClassName={styles.Active} to="/"><i className="fa-solid fa-house"></i>Home</NavLink>
                     <NavLink activeClassName={styles.Active} to="/mybooks"><i className="fa-solid fa-book"></i>My Books</NavLink>
                   </>
                 ) : null}
