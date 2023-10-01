@@ -21,3 +21,19 @@
     align-items: center;
     margin: 10px;
 }
+
+.Danger {
+    background-color: #FF0000;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.Danger:hover {
+    background-color: #D60000;
+    transition: background-color 0.3s ease;
+}
