@@ -7,17 +7,21 @@ import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from '../context/currentUserContext';
 import axios from 'axios';
 import Avatar from './Avatar';
+import useAlert from '../hooks/useAlert';
 
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const { setAlert } = useAlert();
 
   const handleSignOut = async () => {
     try {
       await axios.post("/api/dj-rest-auth/logout/");
       setCurrentUser(null);
+      setAlert('Logout success', 'success')
     } catch (err) {
+      setAlert('Logout failed', 'error')
       console.log(err);
     }
   };
