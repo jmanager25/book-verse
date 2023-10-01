@@ -40,3 +40,8 @@ i:hover {
 .Search {
     border-radius: 20px;
 }
+
+.Alert {
+    margin-top: 10px;
+    justify-content: center;
+}

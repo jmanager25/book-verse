@@ -5,6 +5,7 @@ import buttonstyles from "../../styles/Button.module.css";
 import appstyles from "../../App.module.css"
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import axios from "axios";
+import useAlert from '../../hooks/useAlert';
 
 
 const SignUpForm = () => {
@@ -17,6 +18,7 @@ const SignUpForm = () => {
    const { username, password1, password2} = signUpData;
    const [errors, setErrors] = useState({});
    const history = useHistory();
+   const { setAlert } = useAlert();
 
    const handleChange = (event) => {
     setSignUpData({
@@ -30,8 +32,10 @@ const SignUpForm = () => {
     try {
       await axios.post('api/dj-rest-auth/registration/', signUpData);
       history.push("/signin");
+      setAlert('Account created successfully', 'success')
     } catch (err) {
       setErrors(err.response?.data);
+      setAlert('Account creation failed. Please try again', 'error');
     }
    };
 
