@@ -8,12 +8,15 @@ import { useCurrentUser, useSetCurrentUser } from '../context/currentUserContext
 import axios from 'axios';
 import Avatar from './Avatar';
 import useAlert from '../hooks/useAlert';
+import useBurgerMenu from '../hooks/useBurgerMenu';
 
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { setAlert } = useAlert();
+
+  const {expanded, setExpanded, ref} = useBurgerMenu();
 
   const handleSignOut = async () => {
     try {
@@ -54,7 +57,7 @@ const NavBar = () => {
     </>
   )
   return (
-    <Navbar expand="md" fixed="top" className={styles.NavBar}>
+    <Navbar expanded={expanded} expand="md" fixed="top" className={styles.NavBar}>
         <Container fluid>
           <NavLink to="/">
             <Navbar.Brand>
@@ -62,7 +65,7 @@ const NavBar = () => {
             </Navbar.Brand>
           </NavLink>
           {currentUser && addBooks}
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle ref={ref} onClick={() => setExpanded(!expanded)} aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mx-auto">
                 <NavLink exact activeClassName={styles.Active} to="/"><i className="fa-solid fa-house"></i>Home</NavLink>
