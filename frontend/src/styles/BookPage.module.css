@@ -1,0 +1,30 @@
+.Container {
+    margin-top: 20px;
+}
+
+.BookInfo {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Image {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.Title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.Author {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.Summary {
+    font-size: 16px;
+    margin-top: 10px;
+}
