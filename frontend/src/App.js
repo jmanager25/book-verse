@@ -6,9 +6,10 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import './api/axiosDefaults'
 import AlertPopup from "./components/AlertPopup";
-import BookCreateForms from "./pages/books/BookCreateForm";
+import BookCreateForm from "./pages/books/BookCreateForm";
 import BookPage from "./pages/books/BookPage";
 import Book from "./pages/books/Book";
+import BookEditForm from "./pages/books/BookEditForm";
 
 
 function App() {
@@ -22,8 +23,9 @@ function App() {
           <Route exact path="/mybooks" render={() => <h1>My Books</h1>} />
           <Route exact path="/signin" render={() => <SignInForm /> } />
           <Route exact path="/signup" render={() => <SignUpForm /> } />
-          <Route exact path="/books/create" render={() => <BookCreateForms />} />
+          <Route exact path="/books/create" render={() => <BookCreateForm />} />
           <Route exact path="/books/:id" render={() => <BookPage /> } />
+          <Route exact path="/books/:id/edit" render={() => <BookEditForm /> } />
           <Route render={()=><p>404 Page not found</p>} />
         </Switch>
       </Container>

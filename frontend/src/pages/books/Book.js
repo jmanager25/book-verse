@@ -3,10 +3,15 @@ import styles from '../../styles/Book.module.css';
 import buttonstyles from '../../styles/Button.module.css'
 import {Container, Row, Button, Card} from "react-bootstrap";
 import { axiosReq } from '../../api/axiosDefaults';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Book = () => {
     const [books, setBooks] = useState([]);
+    const history = useHistory();
+
+    const handleEdit = (id) => {
+        history.push(`/books/${id}/edit`)
+    };
         
     useEffect(() => {
         const handleMount = async () => {
@@ -33,6 +38,13 @@ const Book = () => {
                     <div className={styles.Title}>{book.title}</div>
                     <div className={styles.Author}> by {book.author}</div>
                     <div className={styles.CardBody}>
+                        {book.is_owner && (
+                            <>
+                                <div className={styles.Icons}>
+                                    <i onClick={() => handleEdit(book.id)} className="fas fa-edit"></i>
+                                </div>
+                            </>
+                            )}
                         <div className='text-center'>
                                 <Button className={buttonstyles.Button}>Save Book</Button>
                         </div>
