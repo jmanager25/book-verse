@@ -56,7 +56,7 @@ function BookPage() {
             </Col>
         </Row>
         <Row>
-
+            related books
         </Row>
         <Row>
               

@@ -1,0 +1,47 @@
+.BookContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.Card {
+    padding: 0;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.CardImage:hover {
+    transform: scale(1.05);
+}
+
+.CardImage {
+    height: 250px;
+    object-fit: cover;
+}
+
+.Title {
+    font-weight: bold;
+}
+
+.CardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Link {
+    margin: 0;
+}
+
+.Icons i {
+    font-size: 18px;
+}
+
+.Icons i:hover {
+    transform: scale(1.15);
+}
+
+.Author {
+    font-size: 15px;
+}
