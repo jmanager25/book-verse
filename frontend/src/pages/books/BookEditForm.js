@@ -5,6 +5,7 @@ import buttonstyles from '../../styles/Button.module.css';
 import appstyles from "../../App.module.css"
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
+import useAlert from '../../hooks/useAlert';
 
 
 function BookEditForm() {
@@ -13,25 +14,26 @@ function BookEditForm() {
     const [bookData, setBookData] = useState({
         title: '',
         author: '',
-        summary: '',
+        description: '',
         genre: '',
         coverImage: '',
     });
 
-    const {title, author, summary, genre, coverImage} = bookData;
+    const {title, author, description, genre, coverImage} = bookData;
 
     const imageInput = useRef(null);
     const history = useHistory();
     const {id} = useParams();
+    const { setAlert } = useAlert();
 
     useEffect(() => {
         const handleMount = async () => {
             try {
                const {data} = await axiosReq.get(`/api/books/${id}/`);
-               console.log(data);
-               const {title, author, summary, genre, coverImage, is_owner} = data;
+               // console.log(data);
+               const {title, author, description, genre, coverImage, is_owner} = data;
 
-               is_owner ? setBookData({title, author, summary, genre, coverImage}) : history.push('/');
+               is_owner ? setBookData({title, author, description, genre, coverImage}) : history.push('/');
             } catch(err){
               console.log(err)
             }
@@ -63,7 +65,7 @@ function BookEditForm() {
 
         formData.append('title', title);
         formData.append('author', author);
-        formData.append('summary', summary);
+        formData.append('description', description);
         formData.append('genre', genre);
 
         if (imageInput?.current?.files[0]) {
@@ -73,10 +75,12 @@ function BookEditForm() {
         try {
           await axiosReq.put(`/api/books/${id}`, formData);
           history.push(`/books/${id}`)
+          setAlert('Book updated successfully', 'success')
         } catch(err){
           console.log(err)
           if (err.response?.status !== 401){
             setErrors(err.response?.data)
+            setAlert('Failed to update book', 'error')
           }  
         }
     }
@@ -122,14 +126,14 @@ function BookEditForm() {
         {errors?.genre?.map((message, idx) =>
             <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
         )}
-        <Form.Group controlId='summary'>
-            <Form.Label className={styles.FormLabel}>Summary</Form.Label>
+        <Form.Group controlId='description'>
+            <Form.Label className={styles.FormLabel}>Description</Form.Label>
             <Form.Control
                 className={styles.FormControl}
                 as='textarea'
-                name='summary'
+                name='description'
                 rows={6}
-                value={summary}
+                value={description}
                 onChange={handleChange}
             />
         </Form.Group>
