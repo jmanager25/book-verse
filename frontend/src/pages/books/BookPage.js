@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Col, Row, Card } from 'react-bootstrap';
 import styles from '../../styles/BookPage.module.css';
+import buttonstyles from '../../styles/Button.module.css'
 import { axiosReq } from '../../api/axiosDefaults';
-import ReviewBookButton from '../../components/ReviewBookButton';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 function BookPage() {
     const { id } = useParams();
@@ -33,7 +34,7 @@ function BookPage() {
                 image goes here
               </Card>
               <div>Number of Reviews</div>
-              <ReviewBookButton bookId={book.id} />
+              <Link to={`/books/${id}/reviews`} className={buttonstyles.Button}>Review This Book</Link>
             </Col>
             <Col xs={12} md={8}>
               <div className={styles.BookInfo}>

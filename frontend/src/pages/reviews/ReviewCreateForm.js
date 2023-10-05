@@ -33,8 +33,8 @@ function ReviewCreateForm() {
     formData.append('rating', rating)
 
     try {
-      const {data} = await axiosReq.post('/api/reviews/', formData)
-      history.push(`/reviews/${data.id}`)
+      const {data} = await axiosReq.post(`/api/books/{book_id}/reviews/`, formData)
+      history.push(`/${data.id}/reviews/`)
       console.log(data)
     } catch(err) {
       if (err.response?.status !== 401){
