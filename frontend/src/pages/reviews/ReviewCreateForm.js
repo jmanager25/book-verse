@@ -6,11 +6,13 @@ import appstyles from '../../App.module.css'
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import StarRating from '../../components/StarRating';
+import useAlert from '../../hooks/useAlert';
 
 function ReviewCreateForm() {
   const [errors, setErrors] = useState({});
   const history = useHistory();
   const { id: bookId } = useParams();
+  const { setAlert } = useAlert();
 
   const [reviewData, setReviewData] = useState({
     review_text: '',
@@ -44,10 +46,12 @@ function ReviewCreateForm() {
     try {
       const {data} = await axiosReq.post(`/api/reviews/`, formData)
       history.push(`/reviews/${data.id}`)
-      console.log(data)
+      setAlert('Review created successfully', 'success')
+      // console.log(data)
     } catch(err) {
       if (err.response?.status !== 401){
         setErrors(err.response?.data)
+        setAlert('Failed to create review', 'error')
       }
     }
   };
@@ -72,6 +76,9 @@ function ReviewCreateForm() {
             <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
           )}
           <StarRating value={rating} onChange={handleRatingChange} />
+          {errors?.rating?.map((message, idx) =>
+            <Alert className={appstyles.Alert} variant="warning" key={idx}>{message}</Alert>
+          )}
           <Button className={buttonstyles.Button} type='submit'>Submit</Button>
         </Form>
     </Container>
