@@ -6,4 +6,10 @@
     margin-right: 10px;
     font-size: 40px;
     cursor: pointer;
+    background: none;
 }
+
+.Star:hover {
+    color: yellow;
+}
+
