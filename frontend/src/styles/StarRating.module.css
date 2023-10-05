@@ -1,0 +1,9 @@
+.StarRating {
+    margin-bottom: 16px;
+}
+
+.Star {
+    margin-right: 10px;
+    font-size: 40px;
+    cursor: pointer;
+}

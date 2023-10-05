@@ -1,0 +1,31 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.Title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.Form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TextArea {
+    width: 100%;
+    max-width: 450px;
+    height: 200px;
+    padding: 8px;
+}
+
+.FormControl {
+    height: 100%;
+}

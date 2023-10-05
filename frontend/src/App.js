@@ -10,6 +10,7 @@ import BookCreateForm from "./pages/books/BookCreateForm";
 import BookPage from "./pages/books/BookPage";
 import Book from "./pages/books/Book";
 import BookEditForm from "./pages/books/BookEditForm";
+import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/books/create" render={() => <BookCreateForm />} />
           <Route exact path="/books/:id" render={() => <BookPage /> } />
           <Route exact path="/books/:id/edit" render={() => <BookEditForm /> } />
+          <Route exact path="/reviews/book/:id" render={() => <ReviewCreateForm /> } />
           <Route render={()=><p>404 Page not found</p>} />
         </Switch>
       </Container>
