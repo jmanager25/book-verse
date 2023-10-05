@@ -8,11 +8,12 @@ const StarRating = ({value, onChange}) => {
   return (
     <div className={styles.StarRating}>
         {stars.map((_, index) => {
+            const ratingValue = index + 1
             return (
                 <FaStar 
                   key={index} 
                   className={styles.Star}
-                  onClick={() => onChange(index + 1)}
+                  onClick={() => onChange(ratingValue)}
                 />)
         })}
     </div>
