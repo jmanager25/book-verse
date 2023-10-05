@@ -80,6 +80,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'books',
+    'reviews',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
