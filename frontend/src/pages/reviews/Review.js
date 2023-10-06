@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/Review.module.css';
 import { useCurrentUser } from '../../context/currentUserContext';
-import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Card, Media } from 'react-bootstrap';
 import Avatar from '../../components/Avatar';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 

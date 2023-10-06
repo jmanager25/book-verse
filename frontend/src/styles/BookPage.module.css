@@ -8,6 +8,10 @@
     justify-content: space-between;
 }
 
+.ImgCol {
+    text-align: -webkit-center ;
+}
+
 .Image {
     max-width: 200px;
     height: auto;
@@ -24,7 +28,11 @@
     margin-top: 5px;
 }
 
-.Summary {
+.description {
     font-size: 16px;
     margin-top: 10px;
+}
+
+.Row {
+    margin: 3rem 0;
 }
