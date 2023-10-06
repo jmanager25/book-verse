@@ -1,0 +1,10 @@
+.Media {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Text {
+    text-align: justify;
+    margin: 1rem 5rem;
+}

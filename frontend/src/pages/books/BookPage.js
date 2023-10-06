@@ -6,6 +6,7 @@ import buttonstyles from '../../styles/Button.module.css'
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
+
 function BookPage() {
     const { id } = useParams();
     const [book, setBook] = useState({results: []});
@@ -61,7 +62,7 @@ function BookPage() {
             related books
         </Row>
         <Row>
-              
+      
         </Row>
     </Container>
   )
