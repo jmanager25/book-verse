@@ -32,7 +32,6 @@ function BookPage() {
       handleMount()
     }, [id])
 
-
   return (
     <Container className={styles.Container}>
         <Row>
