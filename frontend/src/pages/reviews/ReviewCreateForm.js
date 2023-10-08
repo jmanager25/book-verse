@@ -45,7 +45,7 @@ function ReviewCreateForm() {
 
     try {
       const {data} = await axiosReq.post(`/api/reviews/`, formData)
-      history.push(`/reviews/${data.id}`)
+      history.goBack()
       setAlert('Review created successfully', 'success')
       // console.log(data)
     } catch(err) {

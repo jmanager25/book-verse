@@ -22,7 +22,7 @@ const Review = (props) => {
   const is_owner = currentUser?.username === owner
 
   return (
-    <Card>
+    <Card className={styles.Card}>
         <Card.Body>
             <Media className={styles.Media}>
                 <Link>
