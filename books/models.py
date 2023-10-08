@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 
 
 class Book(models.Model):
@@ -21,6 +22,12 @@ class Book(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def update_average_rating(self):
+        reviews = self.review_set.all()
+        average = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
+        self.average_rating = round(average, 2)
+        self.save()
 
     class Meta:
         ordering = ['-created_at']

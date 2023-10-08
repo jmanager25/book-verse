@@ -6,6 +6,7 @@ import buttonstyles from '../../styles/Button.module.css'
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Review from '../reviews/Review';
+import StarRating from '../../components/StarRating';
 
 
 function BookPage() {
@@ -53,7 +54,7 @@ function BookPage() {
                     </div>
                   </div>
                   <div>
-                    5 star review
+                    <StarRating value={book.average_rating} />
                     <span>{book.average_rating}</span>
                   </div>
                   <div>
