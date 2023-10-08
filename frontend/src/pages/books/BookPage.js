@@ -11,13 +11,19 @@ import Review from '../reviews/Review';
 function BookPage() {
     const { id } = useParams();
     const [book, setBook] = useState({});
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
       const handleMount = async () => {
         try {
             const responseBook = await axiosReq.get(`/api/books/${id}`);
+            const responseReview = await axiosReq.get(`/api/reviews/?book=${id}`);
+
             setBook(responseBook.data);
-            console.log(book)
+            setReview(responseReview.data);
+
+            console.log(book);
+            console.log(review);
         } catch(err){
             console.log(err)
         }
@@ -61,7 +67,9 @@ function BookPage() {
           Related books
         </Row>
         <Row className={styles.Row}>
-          <Review />
+          {review.map((review) => (
+            <Review key={review.id} {...review} />
+          ))}
         </Row>
     </Container>
   )
