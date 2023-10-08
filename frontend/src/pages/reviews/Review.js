@@ -4,6 +4,7 @@ import { useCurrentUser } from '../../context/currentUserContext';
 import { Card, Media } from 'react-bootstrap';
 import Avatar from '../../components/Avatar';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import StarRating from '../../components/StarRating';
 
 const Review = (props) => {
   const {
@@ -29,7 +30,7 @@ const Review = (props) => {
                     {owner}
                 </Link>
                 <div>
-                    {rating}
+                    <StarRating value={rating} />
                 </div>
                 <span>{updated_at}</span>
             </Media>

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {FaStar} from 'react-icons/fa';
 import styles from '../styles/StarRating.module.css'
 
 const StarRating = ({value, onChange}) => {
   const stars = Array(5).fill(0);
-  const [selectedStar, setSelectedStar] = useState(value);
 
   const handleStarClick = (ratingValue) => {
-    setSelectedStar(ratingValue);
-    onChange(ratingValue);
-  }
+    if (onChange) {
+      onChange(ratingValue);
+    }
+  };
 
   return (
     <div className={styles.StarRating}>
@@ -20,7 +20,7 @@ const StarRating = ({value, onChange}) => {
                   key={index} 
                   className={styles.Star}
                   onClick={() => handleStarClick(ratingValue)}
-                  color={selectedStar >= ratingValue ? 'yellow' : 'grey'}
+                  color={value >= ratingValue ? 'yellow' : 'grey'}
                 />)
         })}
     </div>
