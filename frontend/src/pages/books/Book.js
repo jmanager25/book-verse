@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Book.module.css';
 import buttonstyles from '../../styles/Button.module.css'
-import {Container, Row, Button, Card} from "react-bootstrap";
+import {Form, Container, Row, Button, Card} from "react-bootstrap";
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
@@ -13,6 +13,7 @@ const Book = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedBookId, setSelectedBookId] = useState(null);
     const { setAlert } = useAlert();
+    const [query, setQuery] = useState("");
 
     const handleEdit = (id) => {
         history.push(`/books/${id}/edit`)
@@ -21,7 +22,7 @@ const Book = () => {
     const openDeleteModal = (id) => {
         setSelectedBookId(id);
         setShowDeleteModal(true); 
-      };
+    };
 
     const handleDelete = async () => {
         if (selectedBookId) {
@@ -41,17 +42,35 @@ const Book = () => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const response = await axiosReq.get('/api/books/')
+                const response = await axiosReq.get(`/api/books/?search=${query}`)
                 setBooks(response.data);
             }catch(err) {
                 console.log(err)
             }
         };
-        handleMount();
-    }, [])
+
+        const timer = setTimeout(() => {
+            handleMount();;
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [query])
 
   return (
     <Container className={styles.Container}>
+        <i className={`fas fa-search ${styles.SearchIcon}`} />
+        <Form className={styles.SearchBar} onSubmit={(event) => event.preventDefault()}>
+            <Form.Control
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+            />
+        </Form>
         <Row xs={1} md={3} lg={4}>
             {books.map((book) => (
                 <div key={book.id} className={styles.BookContainer}>

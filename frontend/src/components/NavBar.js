@@ -1,8 +1,7 @@
 import React from 'react';
-import { Form, Navbar, Container, Button, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from '../assets/logo.png'
 import styles from "../styles/NavBar.module.css"
-import buttonstyles from "../styles/Button.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from '../context/currentUserContext';
 import axios from 'axios';
@@ -74,15 +73,6 @@ const NavBar = () => {
                     <NavLink activeClassName={styles.Active} to="/mybooks"><i className="fa-solid fa-book"></i>My Books</NavLink>
                   </>
                 ) : null}
-                <Form className="d-flex">
-                <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                />
-                <Button className={buttonstyles.Button}>Search</Button>
-                </Form>
             </Nav>
             <Nav>
               {currentUser ? loggedInIcons : loggedOutIcons}
