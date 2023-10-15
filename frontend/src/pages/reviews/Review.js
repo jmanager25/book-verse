@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../../styles/Review.module.css';
 import { useCurrentUser } from '../../context/currentUserContext';
-import { Card, Media } from 'react-bootstrap';
+import { Card, Container, Media } from 'react-bootstrap';
 import Avatar from '../../components/Avatar';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import StarRating from '../../components/StarRating';
@@ -9,6 +9,7 @@ import { MoreDropdown } from '../../components/MoreDropdown';
 import { axiosRes } from '../../api/axiosDefaults';
 import useAlert from '../../hooks/useAlert';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
+import CommentCreateForm from "../comments/CommentCreateForm";
 
 
 const Review = (props) => {
@@ -29,6 +30,7 @@ const Review = (props) => {
   const { setAlert } = useAlert();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
+  const [comments, setComments] = useState({ results: [] });
 
   const handleEdit = () => {
     history.push(`/books/${book}/reviews/${id}/edit`)
@@ -56,7 +58,8 @@ const Review = (props) => {
   };
 
   return (
-    <Card className={styles.Card}>
+    <Container>
+      <Card className={styles.Card}>
         <Card.Body>
             <Media className={styles.Media}>
                 <Link>
@@ -77,12 +80,24 @@ const Review = (props) => {
             <span><i className='far fa-heart' /> Like</span>
             <span><i className='far fa-comments' /> Comment</span>
         </div>
+        {currentUser ? (
+        <CommentCreateForm
+          profile_id={currentUser.profile_id}
+          profileImage={profile_image}
+          review={id}
+          setReview={setSelectedReview}
+          setComments={setComments}
+        />
+        ) : comments.results.length ? (
+          "Comments"
+        ) : null}
         <DeleteConfirmationModal
             show={showDeleteModal}
             handleClose={() => setShowDeleteModal(false)}
             handleConfirm={handleDelete}
         />
     </Card>
+  </Container>
   )
 }
 
