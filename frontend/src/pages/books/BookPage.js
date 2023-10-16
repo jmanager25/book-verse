@@ -13,18 +13,19 @@ function BookPage() {
     const { id } = useParams();
     const [book, setBook] = useState({});
     const [review, setReview] = useState([]);
+    const [comment, setComment] = useState([]);
 
     useEffect(() => {
       const handleMount = async () => {
         try {
             const responseBook = await axiosReq.get(`/api/books/${id}`);
             const responseReview = await axiosReq.get(`/api/reviews/?book=${id}`);
+            const responseComment = await axiosReq.get(`/api/comments/?review=${id}`)
 
             setBook(responseBook.data);
             setReview(responseReview.data);
-
-            console.log(book);
-            console.log(review);
+            setComment(responseComment.data);
+            
         } catch(err){
             console.log(err)
         }
