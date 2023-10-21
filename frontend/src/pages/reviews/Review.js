@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Review.module.css';
 import { useCurrentUser } from '../../context/currentUserContext';
 import { Card, Container, Media } from 'react-bootstrap';
@@ -10,14 +10,13 @@ import { axiosRes } from '../../api/axiosDefaults';
 import useAlert from '../../hooks/useAlert';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import CommentCreateForm from "../comments/CommentCreateForm";
-
+import Comment from '../comments/Comment'
 
 const Review = (props) => {
   const {
     id,
     owner,
     book,
-    created_at,
     updated_at,
     profile_image,
     rating,
@@ -57,6 +56,19 @@ const Review = (props) => {
     }
   };
 
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const response = await axiosRes.get(`https://8080-jmanager25-bookverse-1zsn2srl0z9.ws-eu105.gitpod.io/api/comments/?review=${id}`)
+        setComments(response.data);
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    handleMount();
+  }, [id])
+
+
   return (
     <Container>
       <Card className={styles.Card}>
@@ -88,9 +100,14 @@ const Review = (props) => {
           setReview={setSelectedReview}
           setComments={setComments}
         />
-        ) : comments.results.length ? (
+        ) : comments.results ? (
           "Comments"
         ) : null}
+        {comments.results ? (
+          comments.results.map((comment) => (
+            <Comment key={comment.id} {...comment} />
+          ))
+        ): null} 
         <DeleteConfirmationModal
             show={showDeleteModal}
             handleClose={() => setShowDeleteModal(false)}
