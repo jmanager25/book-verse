@@ -6,7 +6,7 @@ import Avatar from '../../components/Avatar';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import StarRating from '../../components/StarRating';
 import { MoreDropdown } from '../../components/MoreDropdown';
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import useAlert from '../../hooks/useAlert';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import CommentCreateForm from "../comments/CommentCreateForm";
@@ -29,7 +29,7 @@ const Review = (props) => {
   const { setAlert } = useAlert();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
-  const [comments, setComments] = useState({ results: [] });
+  const [comments, setComments] = useState([]);
 
   const handleEdit = () => {
     history.push(`/books/${book}/reviews/${id}/edit`)
@@ -59,7 +59,7 @@ const Review = (props) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const response = await axiosRes.get(`https://8080-jmanager25-bookverse-1zsn2srl0z9.ws-eu105.gitpod.io/api/comments/?review=${id}`)
+        const response = await axiosReq.get(`https://8080-jmanager25-bookverse-1zsn2srl0z9.ws-eu105.gitpod.io/api/comments/?review=${id}`)
         setComments(response.data);
       } catch (err) {
         console.log(err)
@@ -92,7 +92,7 @@ const Review = (props) => {
             <span><i className='far fa-heart' /> Like</span>
             <span><i className='far fa-comments' /> Comment</span>
         </div>
-        {currentUser ? (
+        {currentUser && (
         <CommentCreateForm
           profile_id={currentUser.profile_id}
           profileImage={profile_image}
@@ -100,11 +100,9 @@ const Review = (props) => {
           setReview={setSelectedReview}
           setComments={setComments}
         />
-        ) : comments.results ? (
-          "Comments"
-        ) : null}
-        {comments.results ? (
-          comments.results.map((comment) => (
+        )}
+        {comments.length ? (
+          comments.map((comment) => (
             <Comment key={comment.id} {...comment} />
           ))
         ): null} 
