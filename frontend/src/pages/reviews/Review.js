@@ -21,6 +21,7 @@ const Review = (props) => {
     profile_image,
     rating,
     review_text,
+    comments_count,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -30,6 +31,7 @@ const Review = (props) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
   const [comments, setComments] = useState([]);
+  
 
   const handleEdit = () => {
     history.push(`/books/${book}/reviews/${id}/edit`)
@@ -89,8 +91,8 @@ const Review = (props) => {
             <Card.Text className={styles.Text}>{review_text}</Card.Text>
         </Card.Body>
         <div className='text-center'>
-            <span><i className='far fa-heart' /> Like</span>
-            <span><i className='far fa-comments' /> Comment</span>
+            <span><i className='far fa-heart' /></span>
+            <span><i className='far fa-comments' />{comments_count}</span>
         </div>
         {currentUser && (
         <CommentCreateForm

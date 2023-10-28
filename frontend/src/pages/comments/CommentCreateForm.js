@@ -7,10 +7,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 import styles from "../../styles/CommentCreateEditForm.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import useAlert from "../../hooks/useAlert";
+
 
 function CommentCreateForm(props) {
-  const { review, setReview, setComments, profileImage, profile_id } = props;
+  const { review, setComments, profileImage, profile_id, } = props;
   const [content, setContent] = useState("");
+  const { setAlert } = useAlert();
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -23,21 +26,17 @@ function CommentCreateForm(props) {
         content,
         review,
       });
-      setComments((prevComments) => ({
-        ...prevComments,
-        results: [data, ...prevComments.results],
-      }));
-      setReview((prevReview) => ({
-        results: [
-          {
-            ...prevReview.results[0],
-            comments_count: prevReview.results[0].comments_count + 1,
-          },
-        ],
-      }));
+      // the comments state is not being updated, fix it later
+      setComments((prevComments) => [...prevComments, data]);
+      
       setContent("");
+      setAlert('Comment created successfully', 'success');
+      // Find a solution to update the state of the review in order for new reviews to be displayed without reloading the page
+      window.location.reload()
+      
     } catch (err) {
       console.log(err);
+      setAlert('Failed to create comment', 'error');
     }
   };
 

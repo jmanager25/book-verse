@@ -4,13 +4,16 @@ from bookverse_api.permissions import IsOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Review
 from .serializers import ReviewSerializer
+from django.db.models import Count
 
 
 class ReviewListView(generics.ListCreateAPIView):
     """
     List and create reviews
     """
-    queryset = Review.objects.all()
+    queryset = Review.objects.annotate(
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
