@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Col, Row, Card } from 'react-bootstrap';
+import { Container, Col, Row, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from '../../styles/BookPage.module.css';
 import buttonstyles from '../../styles/Button.module.css'
-import { axiosReq } from '../../api/axiosDefaults';
+import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Review from '../reviews/Review';
 import StarRating from '../../components/StarRating';
+import { useCurrentUser } from '../../context/currentUserContext';
+import useAlert from '../../hooks/useAlert';
 
 
 function BookPage() {
     const { id } = useParams();
     const [book, setBook] = useState({});
     const [review, setReview] = useState([]);
+    const { setAlert } = useAlert();
+
+    const currentUser = useCurrentUser();
 
     useEffect(() => {
       const handleMount = async () => {
@@ -29,6 +34,26 @@ function BookPage() {
       };
       handleMount()
     }, [id])
+
+
+    const handleSave = async () => {
+      try {
+        if (!book.saved_id) {
+          const { data } = await axiosRes.post('/api/saved-books/', { book: id });
+          setBook((prevBook) => ({ ...prevBook, saved_id: data.id }));
+          setAlert( 'Book saved successfully', 'success');
+
+        } else {
+          await axiosRes.delete(`/api/saved-books/${book.saved_id}/`);
+          setBook((prevBook) => ({ ...prevBook, saved_id: null }));
+          setAlert( 'Book unsaved successfully', 'success');
+        }
+
+      } catch (err) {
+        console.error(err);
+        setAlert('Failed to save book', 'error');
+      }
+    };
 
   return (
     <Container className={styles.Container}>
@@ -55,7 +80,19 @@ function BookPage() {
                     <span>{book.average_rating}</span>
                   </div>
                   <div>
-                    <i className="fa-regular fa-bookmark"></i>
+                  {currentUser ? (
+                    <span onClick={handleSave}>
+                      {book.saved_id ? (
+                        <i className="fa-solid fa-bookmark"></i>
+                      ) : (
+                        <i className="fa-regular fa-bookmark"></i>
+                      )}
+                    </span>
+                  ) : (
+                    <OverlayTrigger placement="top" overlay={<Tooltip>Log in to save book</Tooltip>}>
+                      <i className="fa-regular fa-bookmark"></i>
+                    </OverlayTrigger>
+                  )}
                   </div>
               </div>
                   <div className={styles.description}>{book.description}</div> 
