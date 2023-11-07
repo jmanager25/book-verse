@@ -19,7 +19,7 @@ class BookSerializer(serializers.ModelSerializer):
                 owner=user, book=obj
             ).first()
             return saved.id if saved else None
-            return None
+        return None
 
     class Meta:
         model = Book
