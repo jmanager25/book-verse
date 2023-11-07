@@ -3,17 +3,18 @@ import styles from '../../styles/Book.module.css';
 import buttonstyles from '../../styles/Button.module.css'
 import {Form, Container, Row, Button, Card} from "react-bootstrap";
 import { axiosReq } from '../../api/axiosDefaults';
-import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import useAlert from '../../hooks/useAlert';
 
-const Book = () => {
+const Book = ({ message, filter = "" }) => {
     const [books, setBooks] = useState([]);
     const history = useHistory();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedBookId, setSelectedBookId] = useState(null);
     const { setAlert } = useAlert();
     const [query, setQuery] = useState("");
+    const {pathname} = useLocation();
 
     const handleEdit = (id) => {
         history.push(`/books/${id}/edit`)
@@ -42,7 +43,7 @@ const Book = () => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const response = await axiosReq.get(`/api/books/?search=${query}`)
+                const response = await axiosReq.get(`/api/books/?search=${query}&${filter}`)
                 setBooks(response.data);
             }catch(err) {
                 console.log(err)
@@ -56,7 +57,7 @@ const Book = () => {
         return () => {
             clearTimeout(timer);
         };
-    }, [query])
+    }, [query, filter, pathname])
 
     return (
         <Container className={styles.Container}>

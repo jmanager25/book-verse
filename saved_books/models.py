@@ -8,7 +8,8 @@ class SavedBook(models.Model):
     Saved books model
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(
+        Book, related_name='saved', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

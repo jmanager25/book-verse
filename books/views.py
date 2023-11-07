@@ -1,9 +1,9 @@
 from rest_framework import generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Book
 from .serializers import BookSerializer
 from bookverse_api.permissions import IsOwnerOrReadOnly
-
 
 class BookListView(generics.ListCreateAPIView):
     """
@@ -14,7 +14,9 @@ class BookListView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [
         filters.SearchFilter,
+        DjangoFilterBackend,
     ]
+    filterset_fields = ['saved__owner__profile' ]
     search_fields = [
         "owner__username",
         "title",

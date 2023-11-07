@@ -12,9 +12,13 @@ import Book from "./pages/books/Book";
 import BookEditForm from "./pages/books/BookEditForm";
 import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
 import ReviewEditForm from "./pages/reviews/ReviewEditForm";
+import { useCurrentUser } from "./context/currentUserContext";
 
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
+
   return (
     <div className={styles.App}>
       <NavBar />
@@ -22,7 +26,15 @@ function App() {
         <AlertPopup />
         <Switch>
           <Route exact path="/" render={() => <Book />} />
-          <Route exact path="/mybooks" render={() => <h1>My Books</h1>} />
+          <Route
+            exact 
+            path="/mybooks" 
+            render={() => (
+              <Book
+                message="No books saved"
+                filter={`saved__owner__profile=${profile_id}`}
+              />
+            )} />
           <Route exact path="/signin" render={() => <SignInForm /> } />
           <Route exact path="/signup" render={() => <SignUpForm /> } />
           <Route exact path="/books/create" render={() => <BookCreateForm />} />
