@@ -30,6 +30,7 @@ urlpatterns = [
     path('api/', include('reviews.urls')),
     path('api/', include('comments.urls')),
     path('api/', include('saved_books.urls')),
+    path('api/', include('likes.urls')),
 ]
 
 

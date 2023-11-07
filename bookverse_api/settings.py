@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'reviews',
     'comments',
     'saved_books',
+    'likes',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
