@@ -102,8 +102,8 @@ function BookPage() {
           Related books
         </Row>
         <Row className={styles.Row}>
-          {review.map((review) => (
-            <Review key={review.id} {...review} />
+         {review.map((review) => (
+            <Review key={review.id} {...review} setReviews={setReview} />
           ))}
         </Row>
     </Container>
