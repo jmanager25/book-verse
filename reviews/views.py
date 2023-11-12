@@ -25,7 +25,12 @@ class ReviewListView(generics.ListCreateAPIView):
         'likes_count',
         'comments_count',
     ]
-    filterset_fields = ['book']
+    filterset_fields = [
+        'book',
+        'owner__followed__owner__profile',
+        'likes__owner__profile',
+        'owner__profile',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
