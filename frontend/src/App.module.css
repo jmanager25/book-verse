@@ -45,3 +45,10 @@ i:hover {
     margin-top: 10px;
     justify-content: center;
 }
+
+.Content {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #dadadf;
+}

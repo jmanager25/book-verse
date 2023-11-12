@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Book.module.css';
-import buttonstyles from '../../styles/Button.module.css'
-import {Form, Container, Row, Button, Card} from "react-bootstrap";
+import {Form, Container, Row, Card} from "react-bootstrap";
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link, useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import DeleteConfirmationModal from '../../components/DeleteConfirmationModal';
 import useAlert from '../../hooks/useAlert';
+import PopularProfiles from '../profiles/PopularProfiles';
+
 
 const Book = ({ message, filter = "" }) => {
     const [books, setBooks] = useState([]);
@@ -72,6 +73,7 @@ const Book = ({ message, filter = "" }) => {
                     aria-label="Search"
                 />
             </Form>
+            <PopularProfiles />
             <Row xs={1} md={3} lg={4}>
                 {books.map((book) => (
                     <div key={book.id} className={styles.BookContainer}>

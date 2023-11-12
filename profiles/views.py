@@ -24,6 +24,7 @@ class ProfileListView(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'owner__following__followed__profile',
+        'owner__followed__owner__profile',
     ]
     ordering_fields = [
         'books_count',

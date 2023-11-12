@@ -1,8 +1,8 @@
 .Button {
     background-color: #6D9DC5;
     color: #ffffff;
-    padding: 8px;
-    width: 10rem;
+    padding: 5px;
+    width: 5rem;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -25,7 +25,7 @@
 .Danger {
     background-color: #FF0000;
     color: #ffffff;
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
