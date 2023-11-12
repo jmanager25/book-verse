@@ -5,6 +5,7 @@ import { useCurrentUser } from '../../context/currentUserContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Avatar from '../../components/Avatar';
 import { Button } from 'react-bootstrap';
+import { useSetProfileData } from '../../context/ProfileDataContext';
 
 
 const Profile = (props) => {
@@ -13,6 +14,8 @@ const Profile = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const {handleFollow, handleUnfollow} = useSetProfileData();
 
   return (
     <div className='flex-column'>
@@ -27,9 +30,9 @@ const Profile = (props) => {
       <div className='ml-auto'>
         {currentUser && !is_owner && (
           following_id ? (
-            <Button className={buttonStyles.Button} onClick={() => {}}>unfollow</Button>
+            <Button className={buttonStyles.Button} onClick={() => handleUnfollow(profile)}>unfollow</Button>
           ) : (
-            <Button className={buttonStyles.Button} onClick={() => {}}>follow</Button>
+            <Button className={buttonStyles.Button} onClick={() => handleFollow(profile)}>follow</Button>
           )
         )}
       </div>

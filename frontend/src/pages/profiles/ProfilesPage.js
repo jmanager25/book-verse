@@ -11,7 +11,7 @@ import { useProfileData, useSetProfileData } from '../../context/ProfileDataCont
 function ProfilesPage() {
     const currentUser = useCurrentUser();
     const {id} = useParams();
-    const setProfileData = useSetProfileData();
+    const {setProfileData, handleFollow, handleUnfollow }= useSetProfileData();
     const {pageProfile} = useProfileData();
     const [profile] = pageProfile.results;
     const is_owner = currentUser?.username === profile?.owner;
@@ -63,9 +63,9 @@ function ProfilesPage() {
                 <Col lg={3} className='text-lg-right mt-2'>
                 {currentUser && !is_owner && (
                     profile?.following_id  ? (
-                        <Button className={buttonStyles.Button} onClick={() => {}}>unfollow</Button>
+                        <Button className={buttonStyles.Button} onClick={() => handleUnfollow(profile)}>unfollow</Button>
                     ) : (
-                        <Button className={buttonStyles.Button} onClick={() => {}}>follow</Button>
+                        <Button className={buttonStyles.Button} onClick={() => handleFollow(profile)}>follow</Button>
                     )
                 )}
                 </Col>
