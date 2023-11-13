@@ -4,9 +4,11 @@ import buttonStyles from '../../styles/Button.module.css'
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import PopularProfiles from './PopularProfiles';
 import { useCurrentUser } from '../../context/currentUserContext';
-import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../context/ProfileDataContext';
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function ProfilesPage() {
     const currentUser = useCurrentUser();
@@ -35,6 +37,7 @@ function ProfilesPage() {
 
     const userInfo = (
         <>
+            {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
             <Row className='px-3 text-center'>
                 <Col lg={3} className='text-lg-left'>
                     <Image className={styles.ProfileImage} roundedCircle src={profile?.image} />

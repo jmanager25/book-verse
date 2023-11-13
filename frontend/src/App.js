@@ -14,6 +14,9 @@ import ReviewCreateForm from "./pages/reviews/ReviewCreateForm";
 import ReviewEditForm from "./pages/reviews/ReviewEditForm";
 import { useCurrentUser } from "./context/currentUserContext";
 import ProfilesPage from "./pages/profiles/ProfilesPage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
           <Route exact path="/books/:id/reviews" render={() => <ReviewCreateForm /> } />
           <Route exact path="/books/:bookId/reviews/:reviewId/edit" render={() => <ReviewEditForm/> } />
           <Route exact path="/profiles/:id" render={() => <ProfilesPage /> } />
+          <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
+          <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
+          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
           <Route render={()=><p>404 Page not found</p>} />
         </Switch>
       </Container>
