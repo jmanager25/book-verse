@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/ProfilesPage.module.css';
 import buttonStyles from '../../styles/Button.module.css'
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Carousel, Col, Container, Image, Row } from 'react-bootstrap';
 import PopularProfiles from './PopularProfiles';
 import { useCurrentUser } from '../../context/currentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import { useProfileData, useSetProfileData } from '../../context/ProfileDataContext';
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import Review from '../reviews/Review';
+import BooksDisplay from '../books/BooksDisplay';
 
 
 function ProfilesPage() {
@@ -17,17 +19,24 @@ function ProfilesPage() {
     const {pageProfile} = useProfileData();
     const [profile] = pageProfile.results;
     const is_owner = currentUser?.username === profile?.owner;
+    const [profileReviews, setProfileReviews] = useState([]);
+    const [profileBooks, setProfileBooks] = useState([]);
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [{data: pageProfile}] = await Promise.all ([
+                const [{data: pageProfile}, reviewsResponse, booksResponse] = await Promise.all ([
                     axiosReq.get(`/api/profiles/${id}/`),
+                    axiosReq.get(`/api/reviews/?owner__profile=${id}`),
+                    axiosReq.get(`/api/books/?owner__profile=${id}`),
                 ]);
                 setProfileData(prevState => ({
                     ...prevState,
                     pageProfile: {results: [pageProfile]},
                 }));
+                setProfileReviews(reviewsResponse.data)
+                setProfileBooks(booksResponse.data)
             } catch (err) {
                 console.log(err);
             }
@@ -77,14 +86,48 @@ function ProfilesPage() {
         </>
     )
 
+    const mainProfileReviews = (
+        <>
+            <hr/>
+            <p className='text-center'>{profile?.owner}'s reviews</p>
+            <hr/>
+            {profileReviews.length ? (
+                profileReviews.map((review) => (
+                    <Review key={review.id} {...review} setReviews={setProfileReviews} />
+                ))
+            ) : (
+                <p className='text-center'><strong>No reviews found for {profile?.owner}.</strong></p>
+            )}
+        </>
+    )
+
+    const mainProfileBooks = (
+        <>
+            <hr/>
+            <p className='text-center'>{profile?.owner}'s books</p>
+            <hr/>
+            {profileBooks.length ? (
+                <Carousel indicators={false}>
+                    {profileBooks.map((book) => (
+                        <Carousel.Item key={book.id}>
+                            <BooksDisplay {...book} />
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            ) : (
+                <p className='text-center'><strong>No books found for {profile?.owner}.</strong></p>
+            )}
+        </>
+    )
+
     return (
         <Container className={styles.Container}>
             <PopularProfiles />
             <Row>
                 {userInfo}
+                {mainProfileBooks}
+                {mainProfileReviews}
             </Row>
-            <Row></Row>
-            <Row></Row>
         </Container>
     )
 }

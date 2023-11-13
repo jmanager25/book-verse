@@ -16,7 +16,10 @@ class BookListView(generics.ListCreateAPIView):
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
-    filterset_fields = ['saved__owner__profile' ]
+    filterset_fields = [
+        'saved__owner__profile',
+        'owner__profile',
+    ]
     search_fields = [
         "owner__username",
         "title",
