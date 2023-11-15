@@ -34,6 +34,7 @@ const Review = (props) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
   const [comments, setComments] = useState([]);
+  const [isMounted, setIsMounted] = useState(true);
   
 
   const handleLike = async () => {
@@ -85,10 +86,9 @@ const Review = (props) => {
   const handleDelete = async () => {
     if (selectedReview) {
       try {
-        // temporary solution to delete review, does not work on deployed project bvecause the url is different
-        await axiosRes.delete(`https://8080-jmanager25-bookverse-1zsn2srl0z9.ws-eu105.gitpod.io/api/reviews/${id}`);
-        // Find a better solution because reloading the entire page gives poor user expirience
-        window.location.reload()
+        await axiosRes.delete(`/api/reviews/${id}`);
+        setReviews((prevReviews) => prevReviews.filter((review) => review.id !== id));
+        
         setAlert('Review deleted succesfuly', 'success')
       } catch (err) {
         console.log(err)
@@ -101,14 +101,22 @@ const Review = (props) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const response = await axiosReq.get(`https://8080-jmanager25-bookverse-1zsn2srl0z9.ws-eu106.gitpod.io/api/comments/?review=${id}`)
-        setComments(response.data);
+        const response = await axiosReq.get(`/api/comments/?review=${id}`)
+        if (isMounted) {
+          setComments(response.data);
+        }
       } catch (err) {
         console.log(err)
       }
     };
     handleMount();
-  }, [id])
+
+    return () => {
+      setIsMounted(false);
+      setComments([]);
+    };
+
+  }, [id, isMounted])
 
   return (
     <Container>

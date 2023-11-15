@@ -26,13 +26,9 @@ function CommentCreateForm(props) {
         content,
         review,
       });
-      // the comments state is not being updated, fix it later
       setComments((prevComments) => [...prevComments, data]);
-      
       setContent("");
       setAlert('Comment created successfully', 'success');
-      // Find a solution to update the state of the review in order for new reviews to be displayed without reloading the page
-      window.location.reload()
       
     } catch (err) {
       console.log(err);
