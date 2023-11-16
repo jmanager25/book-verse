@@ -87,7 +87,6 @@ const Review = (props) => {
       try {
         await axiosRes.delete(`/api/reviews/${id}`);
         setReviews((prevReviews) => prevReviews.filter((review) => review.id !== id));
-        
         setAlert('Review deleted succesfuly', 'success')
       } catch (err) {
         console.log(err)
@@ -164,7 +163,13 @@ const Review = (props) => {
         )}
         {comments.length ? (
           comments.map((comment) => (
-            <Comment key={comment.id} {...comment} />
+            <Comment 
+              key={comment.id} 
+              {...comment} 
+              setReviews={setReviews}
+              setComments={setComments}
+              reviewId={id}
+            />
           ))
         ): null} 
         <DeleteConfirmationModal

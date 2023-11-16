@@ -3,9 +3,42 @@ import { Media } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import styles from "../../styles/Comment.module.css";
+import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
+import { useCurrentUser } from "../../context/currentUserContext";
+import useAlert from "../../hooks/useAlert";
 
 const Comment = (props) => {
-  const { profile_id, profile_image, owner, updated_at, content } = props;
+  const {id, profile_id, profile_image, owner, updated_at, content, setReviews, setComments, reviewId } = props;
+
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
+  const { setAlert } = useAlert();
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/api/comments/${id}/`);
+
+      setComments((prevComments) => prevComments.filter((comment) => comment.id !== id));
+
+      setReviews((prevReviews) => {
+        return prevReviews.map((prevReview) => {
+          if (prevReview.id === reviewId) {
+            return {
+              ...prevReview,
+              comments_count: prevReview.comments_count - 1, 
+            };
+          }
+          return prevReview;
+        });
+      });
+      setAlert('Comment deleted successfully', 'success');
+
+    } catch (err) {
+      console.log(err);
+      setAlert('Failed to delete comment', 'error');
+    }
+  };
 
   return (
     <div>
@@ -19,6 +52,9 @@ const Comment = (props) => {
           <span className={styles.Date}>{updated_at}</span>
           <p>{content}</p>
         </Media.Body>
+        {is_owner && (
+          <MoreDropdown handleEdit={() => {}} handleDelete={handleDelete} />
+        )}
       </Media>
     </div>
   );
