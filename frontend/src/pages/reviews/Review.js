@@ -73,7 +73,6 @@ const Review = (props) => {
     }
   };
 
-  
   const handleEdit = () => {
     history.push(`/books/${book}/reviews/${id}/edit`)
   }
@@ -158,8 +157,9 @@ const Review = (props) => {
           profile_id={currentUser.profile_id}
           profileImage={profile_image}
           review={id}
-          setReview={setSelectedReview}
+          setReviews={setReviews}
           setComments={setComments}
+          id={id}
         />
         )}
         {comments.length ? (

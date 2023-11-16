@@ -11,7 +11,7 @@ import useAlert from "../../hooks/useAlert";
 
 
 function CommentCreateForm(props) {
-  const { review, setComments, profileImage, profile_id, } = props;
+  const { review, setComments, profileImage, profile_id, setReviews, id } = props;
   const [content, setContent] = useState("");
   const { setAlert } = useAlert();
 
@@ -28,6 +28,17 @@ function CommentCreateForm(props) {
       });
       setComments((prevComments) => [...prevComments, data]);
       setContent("");
+      setReviews((prevReviews) => {
+        return prevReviews.map((prevReview) => {
+          if (prevReview.id === id) {
+            return {
+              ...prevReview,
+              comments_count: prevReview.comments_count + 1, 
+            };
+          }
+          return prevReview;
+        });
+      });
       setAlert('Comment created successfully', 'success');
       
     } catch (err) {
