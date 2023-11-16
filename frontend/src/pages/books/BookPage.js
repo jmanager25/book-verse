@@ -9,7 +9,6 @@ import Review from '../reviews/Review';
 import StarRating from '../../components/StarRating';
 import { useCurrentUser } from '../../context/currentUserContext';
 import useAlert from '../../hooks/useAlert';
-import { MoreDropdown } from '../../components/MoreDropdown';
 
 
 function BookPage() {

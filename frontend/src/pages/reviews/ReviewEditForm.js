@@ -61,7 +61,7 @@ function ReviewEditForm() {
         try {
           await axiosReq.put(`/api/reviews/${reviewId}`, formData);
           history.goBack()
-          setAlert('review updated successfully', 'success')
+          setAlert('Review updated successfully', 'success')
         } catch(err){
           console.log(err)
           if (err.response?.status !== 401){
