@@ -19,6 +19,7 @@ class BookListView(generics.ListCreateAPIView):
     filterset_fields = [
         'saved__owner__profile',
         'owner__profile',
+        'genre',
     ]
     search_fields = [
         "owner__username",

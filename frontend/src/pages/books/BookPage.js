@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Col, Row, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container, Col, Row, Card, OverlayTrigger, Tooltip, Carousel } from 'react-bootstrap';
 import styles from '../../styles/BookPage.module.css';
 import buttonstyles from '../../styles/Button.module.css'
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
@@ -9,6 +9,7 @@ import Review from '../reviews/Review';
 import StarRating from '../../components/StarRating';
 import { useCurrentUser } from '../../context/currentUserContext';
 import useAlert from '../../hooks/useAlert';
+import BooksDisplay from './BooksDisplay';
 
 
 function BookPage() {
@@ -16,24 +17,33 @@ function BookPage() {
     const [book, setBook] = useState({});
     const [review, setReview] = useState([]);
     const { setAlert } = useAlert();
-
+    const [relatedBooks, setRelatedBooks] = useState([]);
     const currentUser = useCurrentUser();
 
     useEffect(() => {
-      const handleMount = async () => {
+      const fetchData = async () => {
         try {
-            const responseBook = await axiosReq.get(`/api/books/${id}`);
-            const responseReview = await axiosReq.get(`/api/reviews/?book=${id}`);
+          const [bookResponse, reviewResponse] = await Promise.all([
+            axiosReq.get(`/api/books/${id}`),
+            axiosReq.get(`/api/reviews/?book=${id}`),
+          ]);
+  
+          setBook(bookResponse.data);
+          setReview(reviewResponse.data);
+  
+          if (bookResponse.data.genre) {
+            const relatedBooksResponse = await axiosReq.get(`/api/books/?genre=${bookResponse.data.genre}`);
+            const filteredRelatedBooks = relatedBooksResponse.data.filter((relatedBook) => relatedBook.id !== bookResponse.data.id);
+            setRelatedBooks(filteredRelatedBooks);
+          }
 
-            setBook(responseBook.data);  
-            setReview(responseReview.data);
-            
-        } catch(err){
-            console.log(err)
+        } catch (err) {
+          console.log(err);
         }
       };
-      handleMount()
-    }, [id])
+  
+      fetchData();
+    }, [id]);
 
 
     const handleSave = async () => {
@@ -99,7 +109,20 @@ function BookPage() {
             </Col>
         </Row>
         <Row className={styles.Row}>
-          Related books
+        <hr/>
+        <h5 className='text-center'>Related Books</h5>
+        <hr/>
+        {relatedBooks.length ? (
+                <Carousel indicators={false}>
+                    {relatedBooks.map((book) => (
+                        <Carousel.Item key={book.id}>
+                            <BooksDisplay {...book} />
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            ) : (
+                <p className='text-center'><strong>No related books found</strong></p>
+            )}
         </Row>
         <Row className={styles.Row}>
          {review.map((review) => (
