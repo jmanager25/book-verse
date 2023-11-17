@@ -26,7 +26,7 @@ function CommentCreateForm(props) {
         content,
         review,
       });
-      setComments((prevComments) => [...prevComments, data]);
+      setComments((prevComments) => [data, ...prevComments]);
       setContent("");
       setReviews((prevReviews) => {
         return prevReviews.map((prevReview) => {
