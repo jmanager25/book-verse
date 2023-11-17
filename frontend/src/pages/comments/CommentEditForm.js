@@ -22,18 +22,17 @@ function CommentEditForm(props) {
                 review: reviewId,
             });
 
-            setComments((prevComments) => ({
-                ...prevComments,
-                results: prevComments.map((comment) =>
+            setComments((prevComments) => 
+                prevComments.map((comment) =>
                     comment.id === id
-                        ? {
+                      ? {
                             ...comment,
                             content: formContent.trim(),
                             updated_at: "now",
                         }
                         : comment
                 ),
-            }));
+            );
         
             setShowEditForm(false);
             setAlert("Comment updated successfully", "success");
