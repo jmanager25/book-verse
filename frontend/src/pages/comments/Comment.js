@@ -37,7 +37,7 @@ const Comment = (props) => {
       setAlert('Comment deleted successfully', 'success');
 
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setAlert('Failed to delete comment', 'error');
     }
   };

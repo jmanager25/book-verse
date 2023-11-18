@@ -89,7 +89,7 @@ const Review = (props) => {
         setReviews((prevReviews) => prevReviews.filter((review) => review.id !== id));
         setAlert('Review deleted succesfuly', 'success')
       } catch (err) {
-        console.log(err)
+        //console.log(err)
         setAlert('Failed to delete review', 'error')
       }
       setShowDeleteModal(false);
@@ -104,7 +104,7 @@ const Review = (props) => {
           setComments(response.data);
         }
       } catch (err) {
-        console.log(err)
+        //console.log(err)
       }
     };
     handleMount();

@@ -42,7 +42,7 @@ function CommentCreateForm(props) {
       setAlert('Comment created successfully', 'success');
       
     } catch (err) {
-      console.log(err);
+     //console.log(err);
       setAlert('Failed to create comment', 'error');
     }
   };

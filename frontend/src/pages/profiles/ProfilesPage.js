@@ -38,7 +38,7 @@ function ProfilesPage() {
                 setProfileReviews(reviewsResponse.data)
                 setProfileBooks(booksResponse.data)
             } catch (err) {
-                console.log(err);
+                //console.log(err);
             }
         };
         fetchData();

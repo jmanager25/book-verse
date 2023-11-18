@@ -12,6 +12,7 @@
 
 .Button:hover {
     background-color: #121420;
+    transform: scale(1.05);
     transition: background-color 0.3s ease;
 }
 
@@ -35,5 +36,6 @@
 
 .Danger:hover {
     background-color: #D60000;
+    transform: scale(1.15);
     transition: background-color 0.3s ease;
 }

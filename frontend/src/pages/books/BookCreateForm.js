@@ -59,7 +59,7 @@ function BookCreateForms() {
           history.push(`/books/${data.id}`)
           setAlert('Book added successfully', 'success')
         } catch(err){
-          console.log(err)
+          //console.log(err)
           if (err.response?.status !== 401){
             setErrors(err.response?.data)
             setAlert('Failed to add a book', 'error')

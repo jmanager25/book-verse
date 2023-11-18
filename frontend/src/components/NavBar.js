@@ -8,6 +8,7 @@ import axios from 'axios';
 import Avatar from './Avatar';
 import useAlert from '../hooks/useAlert';
 import useBurgerMenu from '../hooks/useBurgerMenu';
+import { removeTokenTimestamp } from '../utils/utils';
 
 
 const NavBar = () => {
@@ -21,10 +22,11 @@ const NavBar = () => {
     try {
       await axios.post("/api/dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
       setAlert('Logout success', 'success')
     } catch (err) {
       setAlert('Logout failed', 'error')
-      console.log(err);
+      //console.log(err);
     }
   };
 

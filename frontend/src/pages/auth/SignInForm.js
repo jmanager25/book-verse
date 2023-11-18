@@ -8,6 +8,7 @@ import axios from "axios";
 import { useSetCurrentUser } from '../../context/currentUserContext';
 import useAlert from '../../hooks/useAlert';
 import { useRedirect } from '../../hooks/useRedirect';
+import { setTokenTimestamp } from '../../utils/utils';
 
 
 const SignInForm = () => {
@@ -25,9 +26,11 @@ const SignInForm = () => {
 
    const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const {data} = await axios.post("/api/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user)
+      setTokenTimestamp(data)
       setAlert('login success', 'success')
       history.goBack();
     } catch (err) {

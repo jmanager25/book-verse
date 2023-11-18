@@ -16,11 +16,10 @@ a {
   }
   
 a:hover {
-    color: #121420;
+    transform: scale(1.05);
 }
 
 a:hover i {
-    color: #121420;
     transition: color ease-in-out 0.3s;
   }
   

@@ -34,7 +34,7 @@ const Book = ({ message, filter = "" }) => {
                 history.push("/");
                 setAlert('Book deleted successfully', 'success')
             } catch (err) {
-                console.log(err);
+                //console.log(err);
                 setAlert('Failed to delete book', 'error')
             }
             setShowDeleteModal(false);
@@ -47,7 +47,7 @@ const Book = ({ message, filter = "" }) => {
                 const response = await axiosReq.get(`/api/books/?search=${query}&${filter}`)
                 setBooks(response.data);
             }catch(err) {
-                console.log(err)
+                //console.log(err)
             }
         };
 

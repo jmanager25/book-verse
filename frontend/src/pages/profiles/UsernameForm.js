@@ -48,7 +48,7 @@ const UsernameForm = () => {
       history.goBack();
       setAlert('Username updated successfully', 'success')
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setErrors(err.response?.data);
       setAlert('Failed to update username', 'error')
     }

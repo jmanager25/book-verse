@@ -41,7 +41,7 @@ const ProfileEditForm = () => {
           const { name, biography, image } = data;
           setProfileData({ name, biography, image });
         } catch (err) {
-          console.log(err);
+          //console.log(err);
           history.push("/");
         }
       } else {
@@ -78,7 +78,7 @@ const ProfileEditForm = () => {
       history.goBack();
       setAlert('Profile updated successfully', 'success')
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setErrors(err.response?.data);
       setAlert('Failed to update profile', 'error')
     }

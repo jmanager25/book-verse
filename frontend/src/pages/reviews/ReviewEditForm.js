@@ -29,7 +29,7 @@ function ReviewEditForm() {
 
                is_owner ? setReviewData({review_text, rating}) : history.push('/');
             } catch(err){
-              console.log(err)
+              //console.log(err)
             }
         };
         handleMount();
@@ -63,7 +63,7 @@ function ReviewEditForm() {
           history.goBack()
           setAlert('Review updated successfully', 'success')
         } catch(err){
-          console.log(err)
+          //console.log(err)
           if (err.response?.status !== 401){
             setErrors(err.response?.data)
             setAlert('Failed to update review', 'error')

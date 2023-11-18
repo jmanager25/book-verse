@@ -38,7 +38,7 @@ function BookPage() {
           }
 
         } catch (err) {
-          console.log(err);
+          //console.log(err);
         }
       };
   
@@ -72,8 +72,18 @@ function BookPage() {
               <Card className={styles.Image}>
                 <img src={book.cover_image} alt={book.title} />
               </Card>
-              <div className='m-2'>Number of Reviews</div>
-              <Link to={`/books/${id}/reviews`} className={buttonstyles.Button}>Review This Book</Link>
+              <div className={`m-2 ${styles.Count}'`}>{book.reviews_count} reviews</div>
+              {currentUser ? (
+                <Link to={`/books/${id}/reviews`} className={buttonstyles.Button}>
+                  Review This Book
+                </Link>
+              ) : (
+                <OverlayTrigger placement="top" overlay={<Tooltip>Log in to review this book</Tooltip>}>
+                  <span className={buttonstyles.Button} disabled>
+                    Review This Book
+                  </span>
+                </OverlayTrigger>
+              )}
             </Col>
             <Col xs={12} md={8}>
               <div className={styles.BookInfo}>

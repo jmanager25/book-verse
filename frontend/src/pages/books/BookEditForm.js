@@ -35,7 +35,7 @@ function BookEditForm() {
 
                is_owner ? setBookData({title, author, description, genre, coverImage}) : history.push('/');
             } catch(err){
-              console.log(err)
+              //console.log(err)
             }
         };
         handleMount();
@@ -77,7 +77,7 @@ function BookEditForm() {
           history.push(`/books/${id}`)
           setAlert('Book updated successfully', 'success')
         } catch(err){
-          console.log(err)
+          //console.log(err)
           if (err.response?.status !== 401){
             setErrors(err.response?.data)
             setAlert('Failed to update book', 'error')

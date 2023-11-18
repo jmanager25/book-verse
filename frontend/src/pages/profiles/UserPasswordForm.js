@@ -50,7 +50,7 @@ const UserPasswordForm = () => {
       history.goBack();
       setAlert('Password updated successfully', 'success')
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setErrors(err.response?.data);
       setAlert('Failed to update password', 'error')
     }
