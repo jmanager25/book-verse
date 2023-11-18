@@ -7,11 +7,13 @@ import { Container, Form, Button, Alert } from 'react-bootstrap';
 import axios from "axios";
 import { useSetCurrentUser } from '../../context/currentUserContext';
 import useAlert from '../../hooks/useAlert';
+import { useRedirect } from '../../hooks/useRedirect';
 
 
 const SignInForm = () => {
    const setCurrentUser = useSetCurrentUser();
    const { setAlert } = useAlert();
+   useRedirect("loggedIn")
     
    const [signInData, setSignInData] = useState({
     username: "",
@@ -27,7 +29,7 @@ const SignInForm = () => {
       const {data} = await axios.post("/api/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user)
       setAlert('login success', 'success')
-      history.push("/");
+      history.goBack();
     } catch (err) {
       setErrors(err.response?.data);
       setAlert('login failed', 'error');

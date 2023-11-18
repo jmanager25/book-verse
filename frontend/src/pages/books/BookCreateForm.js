@@ -6,9 +6,11 @@ import appstyles from "../../App.module.css"
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import useAlert from '../../hooks/useAlert';
+import { useRedirect } from '../../hooks/useRedirect';
 
 
 function BookCreateForms() {
+    useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
 
     const [bookData, setBookData] = useState({
