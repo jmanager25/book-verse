@@ -85,7 +85,7 @@ function BookPage() {
                 </OverlayTrigger>
               )}
             </Col>
-            <Col xs={12} md={8}>
+            <Col xs={12} md={8} className='text-center'>
               <div className={styles.BookInfo}>
                   <div>
                     <div className={styles.Title}>
@@ -115,7 +115,7 @@ function BookPage() {
                   )}
                   </div>
               </div>
-                  <div className={styles.description}>{book.description}</div> 
+                  <div className={`${styles.description} p-3`}>{book.description}</div> 
             </Col>
         </Row>
         <Row className={styles.Row}>

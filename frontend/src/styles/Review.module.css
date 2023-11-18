@@ -5,10 +5,16 @@
 }
 
 .Text {
-    text-align: justify;
-    margin: 1rem 5rem;
+    text-align: center;
 }
 
 .Card {
     margin: 2rem;
+}
+
+/* Media Query to hide StarRating on small screens */
+@media (max-width: 767px) {
+    .RatingContainer {
+        display: none;
+    }
 }

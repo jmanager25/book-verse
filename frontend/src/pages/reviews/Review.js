@@ -121,11 +121,11 @@ const Review = (props) => {
       <Card className={styles.Card}>
         <Card.Body>
             <Media className={styles.Media}>
-                <Link>
+                <Link to={`/profiles/${owner.id}`}>
                     <Avatar src={profile_image} height={55} />
                     {owner}
                 </Link>
-                <div>
+                <div className={styles.RatingContainer}>
                     <StarRating value={rating} />
                 </div>
                 <div>
@@ -133,7 +133,7 @@ const Review = (props) => {
                   {is_owner && <MoreDropdown handleEdit={handleEdit} handleDelete={openDeleteModal} />}
                 </div>
             </Media>
-            <Card.Text className={styles.Text}>{review_text}</Card.Text>
+            <Card.Text className={`${styles.Text} p-3`}>{review_text}</Card.Text>
         </Card.Body>
         <div className='text-center'>
         {currentUser ? (

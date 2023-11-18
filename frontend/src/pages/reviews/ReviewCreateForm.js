@@ -44,7 +44,7 @@ function ReviewCreateForm() {
     formData.append('book', bookId);
 
     try {
-      const {data} = await axiosReq.post(`/api/reviews/`, formData)
+      await axiosReq.post(`/api/reviews/`, formData)
       history.goBack()
       setAlert('Review created successfully', 'success')
       // console.log(data)
