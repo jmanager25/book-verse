@@ -121,13 +121,20 @@ function BookPage() {
                     ))}
                 </Carousel>
             ) : (
-                <p className='text-center'><strong>No related books found</strong></p>
+                <p className='text-center'>No related books found</p>
             )}
         </Row>
         <Row className={styles.Row}>
-         {review.map((review) => (
+        <hr/>
+        <h5 className='text-center'>Reviews</h5>
+        <hr/>
+        {review.length > 0 ? (
+          review.map((review) => (
             <Review key={review.id} {...review} setReviews={setReview} />
-          ))}
+          ))
+        ) : (
+          <p className='text-center'>No reviews yet. Be the first to review this book!</p>
+        )}
         </Row>
     </Container>
   )

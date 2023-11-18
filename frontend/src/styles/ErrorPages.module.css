@@ -1,0 +1,15 @@
+.Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+}
+
+.Content {
+    text-align: center;
+}
+
+.Emoji {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
