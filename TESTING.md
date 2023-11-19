@@ -68,12 +68,28 @@
 [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) was used to validate all my CSS files.
 
 <details>
-<summary>CI Python Linter validation Table</summary>
+<summary>W3C CSS validation Table</summary>
 
-| File | Results | Evidenve | 
+| File | Evidence | Result | 
 | --- | --- | --- | 
-| Views | [CSS Jigsaw]() | Pass |
-| Urls | [CSS Jigsaw]() | Pass |
-| Serializers | [CSS Jigsaw]() | Pass |
-| Models | [CSS Jigsaw]() | Pass |
-| Apps | [CSS Jigsaw]() | Pass |
+| App.module.css | ![App.module.css](docs/testing/App.module.css.png) | Pass |
+| Avatar.module.css | ![Avatar.module.css](docs/testing/Avatar.module.css.png) | Pass |
+| Book.module.css | ![Book.module.css ](docs/testing/Book.module.css.png) | Pass |
+| BookCreateForm.module.css | ![BookCreateForm.module.css](docs/testing/BookCreatEditForm.module.css.png) | Pass |
+| BookPage.module.css | ![BookPage.module.css](docs/testing/BookPage.module.css.png) | Pass |
+| Button.module.css | ![Button.module.css](docs/testing/Button.module.css.png) | Pass |
+| Comment.module.css | ![Comment.module.css](docs/testing/Comment.module.css.png) | Pass |
+| CommentCreateForm.module.css | ![CommentCreateForm.module.css](docs/testing/CommentCreateForm.module.css.png) | Pass |
+| ErrorPage.module.css | ![ErrorPage.module.css](docs/testing/ErrorPages.module.css.png) | Pass |
+| MoreDropdown.module.css | ![MoreDropdown.module.css](docs/testing/ErrorPages.module.css.png) | Pass |
+| NavBar.module.css | ![NavBar.module.css](docs/testing/MoreDropdown.module.css.png) | Pass |
+| Profile.module.css | ![Profile.module.css](docs/testing/Profile.module.css.png) | Pass |
+| ProfilePage.module.css | ![ProfilePage.module.css](docs/testing/ProfilePage.module.css.png) | Pass |
+| ReviewCreateForm.module.css | ![ReviewCreateForm.module.css](docs/testing/ReviewCreateForm.module.css.png) | Pass |
+| Reviews.module.css | ![Reviews.module.css ](docs/testing/Reviews.module.css.png) | Pass |
+| SignInUpForm.module.css | ![SignInUpForm.module.css](docs/testing/SignInUpForm.module.css.png) | Pass |
+| StarRating.module.css | ![StarRating.module.css](docs/testing/StarRating.module.css.png) | Pass |
+
+</details>
+
+### ESLint Validation 
