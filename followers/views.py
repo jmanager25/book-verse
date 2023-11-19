@@ -1,8 +1,9 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from bookverse_api.permissions import IsOwnerOrReadOnly
-from .models import Follower 
+from .models import Follower
 from .serializers import FollowerSerializer
+
 
 class FollowerListView(generics.ListCreateAPIView):
     """
@@ -14,6 +15,7 @@ class FollowerListView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class FollowerDetailView(generics.RetrieveDestroyAPIView):
     """

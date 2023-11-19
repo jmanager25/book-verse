@@ -35,3 +35,4 @@ class ProfileSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'is_owner', 'following_id',
             'books_count', 'reviews_count', 'followers_count', 'following_count',
         ]
+

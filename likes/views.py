@@ -4,6 +4,7 @@ from bookverse_api.permissions import IsOwnerOrReadOnly
 from .models import Like 
 from .serializers import LikeSerializer
 
+
 class LikeListView(generics.ListCreateAPIView):
     """
     List and create Likes when logged in
