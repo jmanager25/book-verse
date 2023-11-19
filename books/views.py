@@ -5,6 +5,7 @@ from .models import Book
 from .serializers import BookSerializer
 from bookverse_api.permissions import IsOwnerOrReadOnly
 
+
 class BookListView(generics.ListCreateAPIView):
     """
     List all books or create a new book

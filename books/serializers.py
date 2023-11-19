@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Book
 from saved_books.models import SavedBook
-from reviews.models import Review 
+from reviews.models import Review
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class BookSerializer(serializers.ModelSerializer):
             ).first()
             return saved.id if saved else None
         return None
-    
+
     def get_reviews_count(self, obj):
         return Review.objects.filter(book=obj).count()
 

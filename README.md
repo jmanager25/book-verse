@@ -348,12 +348,12 @@ Once performed thsese steps, you will have both the DRF and the React frontend e
 
 ### Media 
 
-[Book Cover Image](https://islandpress.org/books/lost-landscapes-and-failed-economies)
-[profile photo 1](https://www.deviantart.com/skybonthebunny/art/Random-profile-picture-582304468)
-[profile photo 2](https://nl.pinterest.com/pin/712905816037562710/)
-[profile photo 3](https://avatars.githubusercontent.com/u/5821883?v=4)
-[profile photo 4](https://www.facebook.com/urrandomgeek/photos/a.1648949845361165/1829744933948321/?type=3)
-[profile photo 5](https://yenthejoline.tumblr.com/post/625989933547536384/just-a-fun-random-portrait-sketch-also-made-it-my)
+- [Book Cover Image](https://islandpress.org/books/lost-landscapes-and-failed-economies)
+- [profile photo 1](https://www.deviantart.com/skybonthebunny/art/Random-profile-picture-582304468)
+- [profile photo 2](https://nl.pinterest.com/pin/712905816037562710/)
+- [profile photo 3](https://avatars.githubusercontent.com/u/5821883?v=4)
+- [profile photo 4](https://www.facebook.com/urrandomgeek/photos/a.1648949845361165/1829744933948321/?type=3)
+- [profile photo 5](https://yenthejoline.tumblr.com/post/625989933547536384/just-a-fun-random-portrait-sketch-also-made-it-my)
 
 ### Content 
 
