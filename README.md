@@ -1,108 +1,124 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# BookVerse
 
-Welcome jmanager25,
+![BookVerse Mockup](docs/images/website_mockup.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+BookVerse is a website for book lovers. A place where users can share and discover new books and connect with fellow readers. Users can add books, rate them using a 5-star system, write their opinion about the book, save their favorite reads, and engage with the community by commenting and liking on reviews. The website is designed to be accessible on both desktop and mobile devices.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+While browsing is open to all, active participation, such as adding books, writing reviews, requires a user account. BookVerse aims to create a space for literary enthusiasts to share opinions and connect with fellow readers.
 
-## Gitpod Reminders
+Live website: [BookVerse](https://book-verse-4f0fa583e0ff.herokuapp.com/)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## User Experience
 
-`python3 -m http.server`
+When designing this application, the main goal was to make it work well and be easy to understand. I chose to keep things simple and clear. Colors are used to draw attention to important stuff, like buttons or active parts of the navigation bar.
 
-A blue button should appear to click: _Make Public_,
+The design focuses on being straightforward, so users can easily find and use the app's features without confusion. I made an effort for it to work smoothly on large screens as well as on mobile devices. So, the design is friendly to different screen sizes.
 
-Another blue button should appear to click: _Open Browser_.
+In a nutshell, the design is about making everything work smoothly, being easy to understand, and looking good without being too complicated. Colors are used to help users, and the design works well on both computers and phones.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### User Stories
 
-A blue button should appear to click: _Make Public_,
+- As a user I want to to create an account so that I can access all the functionalities of the Bookverse web application
+- As a user I want to to log in and log out of the Bookverse so that I can access my account and protect my privacy
+- As a user I want to be able to add books to the Bookverse so that I can contribute to the collection of books available for review
+- As a user I want to to be able to edit book details so that I can ensure the information remains accurate and correct them if necessary
+- As a user I want to be able to delete books I've added so that I can manage the content I contribute on the platform
+- As a user I want to see reviews ordered by most recent so that I can stay updated with the latest content and discussions
+- As a user I want to see the book's average rating so that I can get an idea of its general popularity and quality
+- As a user I want to to be able to see reviews and ratings from other users so that I can get their perspectives on a book
+- As a user I want to be able to rate books so that I can provide a quick overall assessment
+- As a user I want to write reviews for books I've read so that I can share my thoughts with the community
+- As a user I want to be able to search for books so that I can quickly find books that I want to review
+- As a user I want to delete reviews so that I can manage the content I contribute on the platform
+- As a user I want to edit my reviews so that I can ensure that they are accurate
+- As a user I want to comment on the reviews of other users so that I can engage in discussions and share my thoughts
+- As a user I want to be able to like a review so that can show my appreciation or agreement with the content shared by others
+- As a user I want to save books so that I can easily access and review them at a more convenient time
+- As a user I want to have a navigation bar so that I can easily access different sections and features of the web application from any page
+- As a user I want to see books related to the one I'm currently viewing so that I can explore similar content that aligns with my interests
+- As a user I want to be able to view and follow other user's profile pages so that I can connect with like-minded readers
+- As a user I want to see statistics on a user’s profile, like how many followers and people they follow, the count of books and reviews they have shared so that I can understand their activity on the website
+- As a user I want to have the ability to add a short bio or description on my profile page so that I can introduce myself to the Bookverse community
+- As a user I want to have a profile page that displays my account information so that I can view all my account informations
+- As a user I want the book review website to have an infinite scroll feature so that I can continuously discover and browse through a vast collection of book reviews without having to click through pagination
+- As a user I want to filter books by various criteria so that I can find specific content that interests me
+- As a user I want to be able to edit and delete my comments on book reviews so that I can manage my contributions within the discussions
+- As a user I want to the Bookverse's design to be visually appealing and intuitive so that I enjoy using it and find it easy to navigate
+- As a user I want to the website to have a responsive design so that I can access it and use its features on different devices, such as desktops, tablets, and smartphones
+- As a user I want to the website to have clear and informative error messages so that I can quickly identify and rectify any mistakes or issues
 
-Another blue button should appear to click: _Open Browser_.
+### Colour Scheme
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+I used [Coolors.co](https://coolors.co/) to genareta the following color palette:
 
-To log into the Heroku toolbelt CLI:
+![Color palette](docs/images/color_palette.png)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Typography 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+I used Google Fonts for the following font:
 
-------
+- Roboto
 
-## Release History
+### Wireframes
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+Wireframes were created using [Balsamiq](https://balsamiq.com/wireframes).
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+The initial wireframes provided a basic layout, but as development progressed, changes were made, new pages were added, and some features were removed and postponed for future implementation.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+Home Page
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+![Home Page](docs/wireframes/home_page.png)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+sign In
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+![Sign In](docs/wireframes/signin.png)
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+sign Up
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+![Sign Up](docs/wireframes/signup.png)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+Book Create Page
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+![Book Create Page](docs/wireframes/book_create_page.png)
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Book Page
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+![Book Page](docs/wireframes/book_page.png)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+My Books
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![My Books](docs/wireframes/my_books.png)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+Profile Page
 
-------
+![Profile Page](docs/wireframes/profile_page.png)
 
-## FAQ about the uptime script
+Review Create Page
 
-**Why have you added this script?**
+![Review Create Page](docs/wireframes/review_create_page.png)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### Database Scheme
 
-**How will this affect me?**
+The Database was created using [Lucid Chart](https://www.lucidchart.com/). It consists of 8 models: Book, Review,
+Comment, Like, Saved Book, Follow, Profile and the built in User model. 
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![Database scheme](docs/images/database.png)
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+## Agile Development 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+This project was developed using agile development principles.
 
-**So….?**
+I used [GitHub Project](https://github.com/users/jmanager25/projects/4/views/1) as an agile tool to manage the project's
+progress using agile principles. With GitHub Issues, I created epics and user stories and each user stories included acceptance criterias, 
+to determine when that user story was completed successfully. I also defined tasks within the user stories, defining specific actions i needed
+to take to fulfill the acceptance criteria.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+To prioritize the work effectively, I used MOSCOW prioritization. These allowed me to categorize issues into four main groups: 
+"must have" features that were critical for the project, "could have" features that were desirable but not essential, 
+"should have" features that had moderate importance, and "won't have" features that were intentionally excluded.
 
-**Can I opt out?**
+To maintain a clear project structure, I linked related issues to their corresponding epics. This provided a high-level view of the project's progress and helped me stay organized throughout the development process.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+![GitHub Project](docs/images/github_project.png)
+![Epic](docs/images/epic.png)
+![Issue](docs/images/user_story.png)
