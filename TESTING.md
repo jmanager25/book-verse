@@ -31,27 +31,27 @@
 | Apps | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/comments/apps.py) | Pass |
 | **Followers**|
 | Views | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/followers/views.py) | Pass |
-| Urls | [CI PEP8]() | Pass |
-| Serializers | [CI PEP8]() | Pass |
-| Models | [CI PEP8]() | Pass |
+| Urls | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/followers/urls.py) | Pass |
+| Serializers | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/followers/serializers.py) | Pass |
+| Models | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/followers/models.py) | Pass |
 | Apps | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/followers/apps.py) | Pass |
 | **Likes** |
-| Views | [CI PEP8]() | Pass |
+| Views | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/likes/views.py) | Pass |
 | Urls | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/likes/urls.py) | Pass |
-| Serializers | [CI PEP8]() | Pass |
+| Serializers | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/likes/serializers.py) | Pass |
 | Models | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/likes/models.py) | Pass |
 | Apps | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/likes/apps.py) | Pass |
 | **Profiles** |
-| Views | [CI PEP8]() | Pass |
+| Views | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/profiles/views.py) | Pass |
 | Urls | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/profiles/urls.py) | Pass |
-| Serializers | [CI PEP8]() | Pass |
-| Models | [CI PEP8]() | Pass |
+| Serializers | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/profiles/serializers.py) | Pass |
+| Models | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/profiles/models.py) | Pass |
 | Apps | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/profiles/apps.py) | Pass |
 | Admin | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/profiles/admin.py)| Pass |
 | **Reviews** |
 | Views | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/reviews/views.py) | Pass |
 | Urls | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/reviews/urls.py) | Pass |
-| Serializers | [CI PEP8]() | Pass |
+| Serializers | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/reviews/serializers.py) | Pass |
 | Models | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/reviews/models.py) | Pass |
 | Apps | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/reviews/apps.py) | Pass |
 | **Saved Books** |
@@ -61,6 +61,19 @@
 | Models | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/saved_books/models.py) | Pass |
 | Apps | [CI PEP8](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/jmanager25/book-verse/main/saved_books/apps.py) | Pass |
 
-
-
 </details>
+
+### W3C CSS Validation
+
+[CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/) was used to validate all my CSS files.
+
+<details>
+<summary>CI Python Linter validation Table</summary>
+
+| File | Results | Evidenve | 
+| --- | --- | --- | 
+| Views | [CSS Jigsaw]() | Pass |
+| Urls | [CSS Jigsaw]() | Pass |
+| Serializers | [CSS Jigsaw]() | Pass |
+| Models | [CSS Jigsaw]() | Pass |
+| Apps | [CSS Jigsaw]() | Pass |
