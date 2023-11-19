@@ -18,7 +18,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
+
     def get_following_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
@@ -33,6 +33,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'name', 'biography', 'image',
             'created_at', 'updated_at', 'is_owner', 'following_id',
-            'books_count', 'reviews_count', 'followers_count', 'following_count',
+            'books_count', 'reviews_count', 'followers_count',
+            'following_count',
         ]
-

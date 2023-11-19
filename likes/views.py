@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from bookverse_api.permissions import IsOwnerOrReadOnly
-from .models import Like 
+from .models import Like
 from .serializers import LikeSerializer
 
 
@@ -15,6 +15,7 @@ class LikeListView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class LikeDetailView(generics.RetrieveDestroyAPIView):
     """

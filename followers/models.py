@@ -6,8 +6,10 @@ class Follower(models.Model):
     """
     Follower model
     """
-    owner = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
-    followed = models.ForeignKey(User, related_name='followed', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='following',
+                              on_delete=models.CASCADE)
+    followed = models.ForeignKey(User, related_name='followed',
+                                 on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

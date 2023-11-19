@@ -11,7 +11,7 @@ class ProfileListView(generics.ListCreateAPIView):
     """
     List all profiles
     """
-    queryset = Profile.objects.annotate (
+    queryset = Profile.objects.annotate(
         books_count=Count('owner__book', distinct=True),
         reviews_count=Count('owner__review', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
@@ -40,7 +40,7 @@ class ProfileDetailView(generics.RetrieveUpdateAPIView):
     """
     Retrieve and update a profile if you are the owner
     """
-    queryset = Profile.objects.annotate (
+    queryset = Profile.objects.annotate(
         books_count=Count('owner__book', distinct=True),
         reviews_count=Count('owner__review', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
@@ -48,4 +48,3 @@ class ProfileDetailView(generics.RetrieveUpdateAPIView):
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
-
