@@ -21,7 +21,7 @@ const {
         <div className={styles.Title}>{title}</div>
         <div className={styles.Author}> by {author}</div>
     </div>
-  )
-}
+  );
+};
 
 export default BooksDisplay;

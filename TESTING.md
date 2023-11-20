@@ -97,6 +97,8 @@
 
 ## Bugs
 
+#### Fixed Bugs
+
 During the development of this project I encountered several bugs, below are the main ones:
 
 1 - Error when trying to register a user or login in the application - with the help of a tutor we managed to fix this error, i was using SessionCookies authentication instead of TokenAuthentication. 
@@ -113,15 +115,51 @@ During the development of this project I encountered several bugs, below are the
 
 4 - When deleting a book, the book gets deleted but still appears in the home page - I had to update the book state after successfull deletion. setBooks((prevBooks) => prevBooks.filter((book) => book.id !== selectedBookId)).
 
+5 - "Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function" - I implemented the folowing solution:
 
-
-#### Fixed Bugs
-
+![Error 5](docs/testing/bugs/bug_2.png)
 
 #### Unfixed Bugs
 
+While testing, I found some issues in the project that I couldn't fix right away. I'll work on solving these problems in future updates.
+
+1 - After deleting a review, the book average rating doesn't get update until the page is refreshed.
+
+![Star rating bug](docs/testing/bugs/starating_bug.png)
+
+2 - When I click on the avatar within the review component, I'm redirected to the profile page. However, not all the data for that user is fetched from the API, and in the search bar, I see https://book-verse-4f0fa583e0ff.herokuapp.com/profiles/undefined.
 
 ## Lighthouse
+
+I conducted testing on all the website pages using Lighthouse testing. The primary concern identified was related to the website's performance, largely attributed to the usage of images.
+
+### Home Page
+
+![Home Page](docs/testing/bugs/home_page.png)
+
+### My Books Page
+
+![My Books Page](docs/testing/bugs/my_books.png)
+
+### Profile Page
+
+![Profile Page](docs/testing/bugs/profile_page.png)
+
+### Add Book Page
+
+![Add Book Page](docs/testing/bugs/book_create_page.png)
+
+### Review Create Page
+
+![Review Create Page](docs/testing/bugs/review_create_page.png)
+
+### Sign In Page
+
+![Sign In Page](docs/testing/bugs/signin_page.png)
+
+### Sign Up Page
+
+![Sign Up Page](docs/testing/bugs/signup_page.png)
 
 
 ## Manual Testing 

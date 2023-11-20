@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Book.module.css';
 import {Form, Container, Row, Card} from "react-bootstrap";
 import { axiosReq } from '../../api/axiosDefaults';
