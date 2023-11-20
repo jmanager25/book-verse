@@ -1,6 +1,6 @@
 import { Alert } from '@mui/material';
 import useAlert from '../hooks/useAlert';
-import appstyles from '../App.module.css'
+import appstyles from '../App.module.css';
 
 const AlertPopup = () => {
   const { text, type } = useAlert();

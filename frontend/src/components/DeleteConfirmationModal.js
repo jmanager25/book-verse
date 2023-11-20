@@ -1,6 +1,6 @@
 import React from 'react';
-import {Modal, Button} from 'react-bootstrap'
-import buttonstyles from '../styles/Button.module.css'
+import { Modal, Button } from 'react-bootstrap';
+import buttonstyles from '../styles/Button.module.css';
 
 const DeleteConfirmationModal = ({ show, handleClose, handleConfirm, itemName}) => {
   return (

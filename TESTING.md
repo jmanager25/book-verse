@@ -93,3 +93,40 @@
 </details>
 
 ### ESLint Validation 
+
+
+## Bugs
+
+During the development of this project I encountered several bugs, below are the main ones:
+
+1 - Error when trying to register a user or login in the application - with the help of a tutor we managed to fix this error, i was using SessionCookies authentication instead of TokenAuthentication. 
+
+![405 and 403 error](docs/testing/bugs/bug_1.png)
+
+2 - Error when trying to deploy the project - Ther was a line of code on my Procfile that shouldn't be there. 
+
+![Deployment Error](docs/testing/bugs/deployment_error.png)
+
+3 - When running the server command the screen would appear white with the following error on the console - I had to comment out the DEV and DEBUG variables.
+
+![Console Errors](docs/testing/bugs/console_errors.png)
+
+4 - When deleting a book, the book gets deleted but still appears in the home page - I had to update the book state after successfull deletion. setBooks((prevBooks) => prevBooks.filter((book) => book.id !== selectedBookId)).
+
+
+
+#### Fixed Bugs
+
+
+#### Unfixed Bugs
+
+
+## Lighthouse
+
+
+## Manual Testing 
+
+### Responsiveness
+
+
+
