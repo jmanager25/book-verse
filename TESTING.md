@@ -166,5 +166,29 @@ I conducted testing on all the website pages using Lighthouse testing. The prima
 
 ### Responsiveness
 
+I tested the website's responsiveness on various devices using developer tools, ranging from small screens like smartphones to larger ones such as desktop monitors. The website is fully responsive on all devices, as confirmed by the screenshots below, showcasing its appearance across different screen sizes. Although the website functions well on most screens, I did encounter some issues on mobile screens. 
+
+#### Mobile Screens 
+
+![Mobile Screen](docs/testing/bugs/mobile_screen_1.png)
+![Mobile Screen](docs/testing/bugs/mobile_screen_2.png)
+
+#### Tablet Screens 
+
+![Tablet Screens](docs/testing/bugs/tablet_screens_1.png)
+![Tablet Screens](docs/testing/bugs/tablet_screens_2.png)
+![Tablet Screens](docs/testing/bugs/tablet_screens_3.png)
+
+#### Laptop Screens
+
+![Laptop Screens](docs/testing/bugs/laptop_screens-1.png)
+![Laptop Screens](docs/testing/bugs/laptop_screens_2.png)
+![Laptop Screens](docs/testing/bugs/laptop_screens_3.png)
+
+#### Desktop Screens 
+
+![Desktop Screens ](docs/testing/bugs/Desktop_screens.png)
+![Desktop Screens ](docs/testing/bugs/Desktop_screens_2.png)
+
 
 
