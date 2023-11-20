@@ -1,8 +1,7 @@
-import React from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import styles from "../styles/MoreDropdown.module.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import React from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Dropdown from 'react-bootstrap/Dropdown';
+import styles from '../styles/MoreDropdown.module.css';
 
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
@@ -21,7 +20,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
       <Dropdown.Toggle as={ThreeDots} />
       <Dropdown.Menu
         className="text-center"
-        popperConfig={{ strategy: "fixed" }}
+        popperConfig={{ strategy: 'fixed' }}
       >
         <Dropdown.Item
           className={styles.DropdownItem}
@@ -52,7 +51,8 @@ export const ProfileEditDropdown = ({ id }) => {
           onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
         >
-          <i className="fas fa-edit" /> edit profile
+          <i className="fas fa-edit" />
+          edit profile
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => history.push(`/profiles/${id}/edit/username`)}

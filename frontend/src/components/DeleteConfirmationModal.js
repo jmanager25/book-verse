@@ -16,7 +16,7 @@ const DeleteConfirmationModal = ({ show, handleClose, handleConfirm, itemName}) 
             <Button className={buttonstyles.Danger} onClick={handleConfirm}>Delete</Button>
         </Modal.Footer>
     </Modal>
-  )
-}
+  );
+};
 
 export default DeleteConfirmationModal;

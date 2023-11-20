@@ -94,6 +94,7 @@
 
 ### ESLint Validation 
 
+I didn't include ESLint validation for React components due to time constraints before the submission deadline. Although ESLint's rules are recognized as best practices, I prioritized functionality over strict adherence in the limited time available. This decision is noted in the README, acknowledging the potential for future improvements in line with ESLint's best practices.
 
 ## Bugs
 

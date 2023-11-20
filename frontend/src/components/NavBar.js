@@ -1,47 +1,48 @@
 import React from 'react';
-import { Navbar, Container, Nav } from "react-bootstrap";
-import logo from '../assets/logo.png'
-import styles from "../styles/NavBar.module.css"
-import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from '../context/currentUserContext';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import logo from '../assets/logo.png';
+import styles from '../styles/NavBar.module.css';
+import { useCurrentUser, useSetCurrentUser } from '../context/currentUserContext';
 import Avatar from './Avatar';
 import useAlert from '../hooks/useAlert';
 import useBurgerMenu from '../hooks/useBurgerMenu';
 import { removeTokenTimestamp } from '../utils/utils';
-
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { setAlert } = useAlert();
 
-  const {expanded, setExpanded, ref} = useBurgerMenu();
+  const { expanded, setExpanded, ref } = useBurgerMenu();
 
   const handleSignOut = async () => {
     try {
-      await axios.post("/api/dj-rest-auth/logout/");
+      await axios.post('/api/dj-rest-auth/logout/');
       setCurrentUser(null);
       removeTokenTimestamp();
-      setAlert('Logout success', 'success')
+      setAlert('Logout success', 'success');
     } catch (err) {
-      setAlert('Logout failed', 'error')
+      setAlert('Logout failed', 'error');
       //console.log(err);
     }
   };
 
   const addBooks = (
     <NavLink 
-      activeClassName={styles.Active} 
-      to="/books/create">
-      <i className="far fa-plus-square"></i>Add Book
+      activeClassName={styles.Active}
+      to="/books/create"
+    >
+      <i className="far fa-plus-square" />
+      Add Book
     </NavLink>
-  )
+  );
 
   const loggedInIcons = 
     <>
       <NavLink 
-        activeClassName={styles.Active} 
+        activeClassName={styles.Active}
         to={`/profiles/${currentUser?.profile_id}`}><Avatar src={currentUser?.profile_image} 
         text={currentUser?.username}
         height={40} />
@@ -82,7 +83,7 @@ const NavBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-  )
+  );
 };
 
-export default NavBar
+export default NavBar;
